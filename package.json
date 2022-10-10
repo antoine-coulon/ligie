@@ -1,0 +1,26 @@
+{
+  "name": "ligie",
+  "version": "0.0.1",
+  "description": "Ligie generates mermaid-js diagrams from Directed Graphs",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "keywords": [
+    "mermaid",
+    "graph",
+    "visualization",
+    "dependencies"
+  ],
+  "author": "Antoine Coulon",
+  "license": "MIT",
+  "dependencies": {
+    "@mermaid-js/mermaid-cli": "^9.1.7"
+  },
+  "files": [
+    "index.js",
+    "package.json",
+    "README.md"
+  ]
+}
