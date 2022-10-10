@@ -1,6 +1,6 @@
 {
   "name": "ligie",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Ligie generates mermaid-js diagrams from Directed Graphs",
   "type": "module",
   "main": "index.js",
