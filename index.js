@@ -4,6 +4,11 @@ import * as os from "node:os";
 
 import { run } from "@mermaid-js/mermaid-cli";
 
+const mermaidConfig = {
+  quiet: true,
+  config: "./mermaid.config.json",
+};
+
 async function safeGeneration(buildMermaidTargetFn) {
   try {
     await buildMermaidTargetFn();
@@ -34,9 +39,11 @@ function toSvg(mermaid, outDir) {
       const location = path.join(os.tmpdir(), `graph-${Date.now()}.mmd`);
       await fs.writeFile(location, mermaid);
 
-      await run(location, path.join(outDir, `graph-${Date.now()}.svg`), {
-        quiet: true,
-      });
+      await run(
+        location,
+        path.join(outDir, `graph-${Date.now()}.svg`),
+        mermaidConfig
+      );
     });
 }
 
@@ -46,9 +53,11 @@ function toPng(mermaid, outDir) {
       const location = path.join(os.tmpdir(), `graph-${Date.now()}.mmd`);
       await fs.writeFile(location, mermaid);
 
-      await run(location, path.join(outDir, `graph-${Date.now()}.png`), {
-        quiet: true,
-      });
+      await run(
+        location,
+        path.join(outDir, `graph-${Date.now()}.png`),
+        mermaidConfig
+      );
     });
 }
 
