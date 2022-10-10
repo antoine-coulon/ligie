@@ -15,7 +15,7 @@ async function safeGeneration(buildMermaidTargetFn) {
 function toRaw(mermaid, outDir) {
   return () =>
     safeGeneration(async () => {
-      const location = path.join(outDir, `mermaid-${Date.now()}.mmd`);
+      const location = path.join(outDir, `graph-${Date.now()}.mmd`);
       await fs.writeFile(location, mermaid);
     });
 }
@@ -23,7 +23,7 @@ function toRaw(mermaid, outDir) {
 function toMarkdown(mermaid, outDir) {
   return () =>
     safeGeneration(async () => {
-      const location = path.join(outDir, `mermaid-${Date.now()}.md`);
+      const location = path.join(outDir, `graph-${Date.now()}.md`);
       await fs.writeFile(location, "```mermaid\n".concat(mermaid, "\n```"));
     });
 }
@@ -31,20 +31,20 @@ function toMarkdown(mermaid, outDir) {
 function toSvg(mermaid, outDir) {
   return () =>
     safeGeneration(async () => {
-      const location = path.join(os.tmpdir(), `mermaid-${Date.now()}.mmd`);
+      const location = path.join(os.tmpdir(), `graph-${Date.now()}.mmd`);
       await fs.writeFile(location, mermaid);
 
-      await run(location, path.join(outDir, `mermaid-${Date.now()}.svg`));
+      await run(location, path.join(outDir, `graph-${Date.now()}.svg`));
     });
 }
 
 function toPng(mermaid, outDir) {
   return () =>
     safeGeneration(async () => {
-      const location = path.join(os.tmpdir(), `mermaid-${Date.now()}.mmd`);
+      const location = path.join(os.tmpdir(), `graph-${Date.now()}.mmd`);
       await fs.writeFile(location, mermaid);
 
-      await run(location, path.join(outDir, `mermaid-${Date.now()}.png`));
+      await run(location, path.join(outDir, `graph-${Date.now()}.png`));
     });
 }
 

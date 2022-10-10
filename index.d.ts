@@ -1,5 +1,5 @@
 export function generateMermaid(
-  graph: string,
+  graph: Record<string, string[]>,
   outDir?: string,
   options?: { orientation: string }
 ): {
