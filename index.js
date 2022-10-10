@@ -34,7 +34,9 @@ function toSvg(mermaid, outDir) {
       const location = path.join(os.tmpdir(), `graph-${Date.now()}.mmd`);
       await fs.writeFile(location, mermaid);
 
-      await run(location, path.join(outDir, `graph-${Date.now()}.svg`));
+      await run(location, path.join(outDir, `graph-${Date.now()}.svg`), {
+        quiet: true,
+      });
     });
 }
 
@@ -44,7 +46,9 @@ function toPng(mermaid, outDir) {
       const location = path.join(os.tmpdir(), `graph-${Date.now()}.mmd`);
       await fs.writeFile(location, mermaid);
 
-      await run(location, path.join(outDir, `graph-${Date.now()}.png`));
+      await run(location, path.join(outDir, `graph-${Date.now()}.png`), {
+        quiet: true,
+      });
     });
 }
 
