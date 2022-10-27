@@ -6,7 +6,7 @@ import { run } from "@mermaid-js/mermaid-cli";
 
 const mermaidConfig = {
   quiet: true,
-  config: "./mermaid.config.json",
+  config: path.join(process.cwd(), "mermaid.config.json"),
 };
 
 async function safeGeneration(buildMermaidTargetFn) {
@@ -75,9 +75,13 @@ export function generateMermaid(
   let mermaid = `graph ${options.orientation}; \n`;
 
   for (const [nodeId, adjacentNodes] of Object.entries(graph)) {
-    mermaid += adjacentNodes
-      .map((childId) => `${nodeId} --> ${childId};`)
-      .join("\n");
+    if (adjacentNodes.length === 0) {
+      mermaid += `${nodeId}; \n`;
+    } else {
+      mermaid += adjacentNodes
+        .map((childId) => `${nodeId} --> ${childId};`)
+        .join("\n");
+    }
   }
 
   return {
